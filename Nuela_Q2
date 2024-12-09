@@ -1,0 +1,121 @@
+import java.util.Scanner;
+
+public class CreaturePowerLevels {
+
+    public static void main(String[] args) {
+        // Create a scanner to read user input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user to enter power levels
+        System.out.print("Enter the Power levels of 10 creatures (separated by spaces):\n");
+        int[] powerLevels = new int[10];
+        
+        // Read the power levels from user input
+        for (int i = 0; i < powerLevels.length; i++) {
+            powerLevels[i] = scanner.nextInt();
+        }
+
+        // Sort the power levels using bubble sort
+        bubbleSort(powerLevels);
+        System.out.println("\nPower levels sorted in ascending order using Bubble Sort:");
+        printArray(powerLevels);
+
+        // Sort the power levels using selection sort
+        selectionSort(powerLevels);
+        System.out.println("\nPower levels sorted in descending order using Selection Sort:");
+        printArray(powerLevels);
+
+        // Perform analysis on the power levels
+        System.out.println("\nAnalysis:");
+        System.out.println("Sum of Even Numbers: " + sumEven(powerLevels));
+        System.out.println("Sum of Odd Numbers: " + sumOdd(powerLevels));
+        System.out.println("Minimum Power level: " + findMin(powerLevels));
+        System.out.println("Maximum Power level: " + findMax(powerLevels));
+    }
+
+    // Method to sort the array using Bubble Sort
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap the elements if they are in the wrong order
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    // Method to sort the array using Selection Sort
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            // Assume the first unsorted element is the minimum
+            int maxIndex = i;
+            for (int j = i + 1; j < n; j++) {
+                // Find the maximum element in the unsorted part
+                if (arr[j] > arr[maxIndex]) {
+                    maxIndex = j;
+                }
+            }
+            // Swap the found maximum element with the first unsorted element
+            int temp = arr[maxIndex];
+            arr[maxIndex] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    // Method to print the array
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println(); // Move to the next line after printing the array
+    }
+
+    // Method to calculate the sum of even numbers
+    public static int sumEven(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                sum += num; // Add to sum if the number is even
+            }
+        }
+        return sum;
+    }
+
+    // Method to calculate the sum of odd numbers
+    public static int sumOdd(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            if (num % 2 != 0) {
+                sum += num; // Add to sum if the number is odd
+            }
+        }
+        return sum;
+    }
+
+    // Method to find the minimum power level
+    public static int findMin(int[] arr) {
+        int min = arr[0]; // Start with the first element as the minimum
+        for (int num : arr) {
+            if (num < min) {
+                min = num; // Update min if a smaller number is found
+            }
+        }
+        return min;
+    }
+
+    // Method to find the maximum power level
+    public static int findMax(int[] arr) {
+        int max = arr[0]; // Start with the first element as the maximum
+        for (int num : arr) {
+            if (num > max) {
+                max = num; // Update max if a larger number is found
+            }
+        }
+        return max;
+    }
+}
