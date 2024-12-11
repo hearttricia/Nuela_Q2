@@ -7,7 +7,7 @@ public class CreaturePowerLevels {
         Scanner scanner = new Scanner(System.in);
         
         // Prompt the user to enter power levels
-        System.out.print("Enter the Power levels of 10 creatures (separated by spaces):\n");
+        System.out.print("Enter the Power levels of 10 creatures:\n");
         int[] powerLevels = new int[10];
         
         // Read the power levels from user input
@@ -17,12 +17,12 @@ public class CreaturePowerLevels {
 
         // Sort the power levels using bubble sort
         bubbleSort(powerLevels);
-        System.out.println("\nPower levels sorted in ascending order using Bubble Sort:");
+        System.out.println("\nBubble Sort (Ascending):"); 
         printArray(powerLevels);
 
         // Sort the power levels using selection sort
         selectionSort(powerLevels);
-        System.out.println("\nPower levels sorted in descending order using Selection Sort:");
+        System.out.println("\nSelection Sort (Descending):"); 
         printArray(powerLevels);
 
         // Perform analysis on the power levels
